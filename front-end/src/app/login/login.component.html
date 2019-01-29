@@ -1,0 +1,13 @@
+<section id="login">
+  <section id="box">
+    <app-decor-bar></app-decor-bar>
+    <form (ngSubmit)="onSubmit(loginform.value)" #loginform="ngForm"> 
+      <h3>Login</h3>
+      <h5>Acesso ao sistema </h5>
+      <input placeholder="Usuario" type="email" name="email" tabindex="1" required autofocus ngModel>
+      <input placeholder="Senha" type="password"  name="password" tabindex="2" required autofocus ngModel>
+      <h5 class="errorText" *ngIf="message" >{{message}}</h5>
+      <button class="mt2 accent" type="submit" >Entrar</button>
+    </form>
+  </section>
+</section>
