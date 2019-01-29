@@ -18,6 +18,7 @@
     "typescript": "^2.0.6"
   },
   "dependencies": {
+    "@types/mocha": "^5.2.5",
     "@types/mongodb": "^3.1.19",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
