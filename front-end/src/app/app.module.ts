@@ -21,6 +21,8 @@ import { ListComponent } from './dashboard/options/list/list.component';
 import { LogoutService } from './logout/logout.service';
 import { CookieService } from 'ngx-cookie-service';
 import { SystemOptionsComponent } from './dashboard/system-options/system-options.component';
+import { SystemOptionsService } from './dashboard/system-options/system-options.service';
+import { SignupService } from './signup/signup.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,11 @@ import { SystemOptionsComponent } from './dashboard/system-options/system-option
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
-    LoginService,LogoutService, CookieService
+    LoginService,
+    LogoutService,
+    CookieService, 
+    SystemOptionsService,
+    SignupService
   ],
   bootstrap: [AppComponent]
 })

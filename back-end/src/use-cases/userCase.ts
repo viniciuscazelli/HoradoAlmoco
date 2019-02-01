@@ -26,13 +26,13 @@ export module userCase {
                     (result) => {
                         console.log(JSON.stringify(result));
                         if(result.length > 0){
-                            var r : messageReturn  = new messageReturn(null,"Erro! Usuário já cadastrado."+JSON.stringify(result));
+                            var r : messageReturn  = new messageReturn(null,"Erro! Usuário já cadastrado."+JSON.stringify(result),400);
                             resolve(r);
                         }else{
                             user.password = sha512(user.password)
     
                             userRepository.create(user).then((result)=>{
-                                var r : messageReturn  = new messageReturn(result?user:undefined,result?"Sucesso!!!":"Erro ao salvar usuario");
+                                var r : messageReturn  = new messageReturn(result?user:undefined,result?"Sucesso!!!":"Erro ao salvar usuario", result? 200 : 500);
                                 resolve(r);
                             },(result)=>{
                 
@@ -42,11 +42,11 @@ export module userCase {
                             });
                         }
                     } , (err) => {
-                        var r : messageReturn  = new messageReturn(undefined,"Erro desconhecido! "+JSON.stringify(err));
+                        var r : messageReturn  = new messageReturn(undefined,"Erro desconhecido! "+JSON.stringify(err),500);
                         resolve(r);
                     }
                 ).catch((err) => {
-                    var r : messageReturn  = new messageReturn(undefined,"Erro desconhecido! "+JSON.stringify(err));
+                    var r : messageReturn  = new messageReturn(undefined,"Erro desconhecido! "+JSON.stringify(err),500);
                     resolve(r);
                 })
             })();

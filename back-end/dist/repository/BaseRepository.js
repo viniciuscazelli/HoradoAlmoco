@@ -17,7 +17,8 @@ class BaseRepository {
     }
     update(id, item) {
         return new Promise((resolve) => {
-            this._collection.updateOne({ "_id": id }, item, (err) => {
+            this._collection.updateOne({ "_id": id }, { $set: item }, (err) => {
+                console.log(JSON.stringify(err));
                 resolve(!err);
             });
         });

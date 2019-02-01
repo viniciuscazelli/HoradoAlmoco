@@ -94,6 +94,15 @@ textarea {
   padding: 10px;
 }
 
+input[type="text"]:disabled,
+input[type="email"]:disabled,
+input[type="tel"]:disabled,
+input[type="url"]:disabled,
+input[type="password"]:disabled,
+textarea:disabled {
+  background: #ddd !important;
+}
+
 input[type="text"]:hover,
 input[type="email"]:hover,
 input[type="tel"]:hover,
@@ -292,6 +301,8 @@ input[type="radio"]:checked::before  , input[type="checkbox"]:checked::before {
   text-align: center;
   line-height: 20px;
 }
+
+
 input[type="radio"]:checked::after , input[type="checkbox"]:checked::after {
   -webkit-animation: click-wave 0.65s;
   -moz-animation: click-wave 0.65s;

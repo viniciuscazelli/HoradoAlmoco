@@ -8,18 +8,22 @@ var authController;
             m = new messageReturn_1.messageReturn(undefined, "Autorização negada", 401);
             req.session.userLogged = undefined;
         }
-        if (req.session.userLogged != undefined && req.session.userLogged != null && sendresponse)
+        if (req.session.userLogged != undefined && req.session.userLogged != null && sendresponse) {
             m = new messageReturn_1.messageReturn(req.session.userLogged, "Autorizado", 200);
-        res.statusCode = m.code;
-        res.send(JSON.stringify(m));
+            res.statusCode = m.code;
+            res.send(JSON.stringify(m));
+        }
         return req.session.userLogged != undefined && req.session.userLogged != null;
     }
     authController.isAuthenticated = isAuthenticated;
     function setAuth(req, user) {
-        // console.log(req.session);
         req.session.userLogged = user;
     }
     authController.setAuth = setAuth;
+    function getUserAuthenticated(req) {
+        return req.session.userLogged;
+    }
+    authController.getUserAuthenticated = getUserAuthenticated;
     function removeAuth(req, res) {
         var m;
         m = new messageReturn_1.messageReturn(undefined, "Sucesso!", 200);

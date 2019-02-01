@@ -6,27 +6,29 @@ export module authController {
     export function isAuthenticated(req, res, sendresponse:boolean = false):boolean{
         
 
-        var m: messageReturn;
+        var m: messageReturn  ;
         
         if(req.session.userLogged == undefined || req.session.userLogged == null ){
             m = new messageReturn(undefined,"Autorização negada", 401);
             req.session.userLogged = undefined;
         }
 
-        if(req.session.userLogged != undefined && req.session.userLogged != null && sendresponse)
+        if(req.session.userLogged != undefined && req.session.userLogged != null && sendresponse){
             m = new messageReturn(req.session.userLogged ,"Autorizado", 200);
-    
-        res.statusCode = m.code;
-        res.send(JSON.stringify(m));
+            res.statusCode = m.code;
+            res.send(JSON.stringify(m));
+        }
 
         return req.session.userLogged != undefined && req.session.userLogged != null;
     }
 
     export function setAuth(req: any,user:user){
-       // console.log(req.session);
         req.session.userLogged = user;
-       
     }
+
+    export function getUserAuthenticated(req: any):user{
+         return req.session.userLogged ;
+     }
 
     export function removeAuth(req, res){
         var m: messageReturn;

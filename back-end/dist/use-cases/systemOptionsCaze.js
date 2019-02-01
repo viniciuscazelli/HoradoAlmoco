@@ -28,13 +28,13 @@ var userCase;
                 userRepository.findUserByEmail(user.email).then((result) => {
                     console.log(JSON.stringify(result));
                     if (result.length > 0) {
-                        var r = new messageReturn_1.messageReturn(null, "Erro! Usuário já cadastrado." + JSON.stringify(result), 400);
+                        var r = new messageReturn_1.messageReturn(null, "Erro! Usuário já cadastrado." + JSON.stringify(result));
                         resolve(r);
                     }
                     else {
                         user.password = js_sha512_1.sha512(user.password);
                         userRepository.create(user).then((result) => {
-                            var r = new messageReturn_1.messageReturn(result ? user : undefined, result ? "Sucesso!!!" : "Erro ao salvar usuario", result ? 200 : 500);
+                            var r = new messageReturn_1.messageReturn(result ? user : undefined, result ? "Sucesso!!!" : "Erro ao salvar usuario");
                             resolve(r);
                         }, (result) => {
                         }).catch((err) => {
@@ -43,10 +43,10 @@ var userCase;
                         });
                     }
                 }, (err) => {
-                    var r = new messageReturn_1.messageReturn(undefined, "Erro desconhecido! " + JSON.stringify(err), 500);
+                    var r = new messageReturn_1.messageReturn(undefined, "Erro desconhecido! " + JSON.stringify(err));
                     resolve(r);
                 }).catch((err) => {
-                    var r = new messageReturn_1.messageReturn(undefined, "Erro desconhecido! " + JSON.stringify(err), 500);
+                    var r = new messageReturn_1.messageReturn(undefined, "Erro desconhecido! " + JSON.stringify(err));
                     resolve(r);
                 });
             }))();

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { user } from '../models/user';
 import {Router} from "@angular/router"
 import { LoginService } from './login.service';
+import { SignupService } from '../signup/signup.service';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +13,8 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
 
   public message : String = undefined;
-
-  constructor(private router: Router, private loginService : LoginService) { 
+  public ocultRedirectToSingUp = true;
+  constructor(private router: Router, private loginService : LoginService, private signupservice : SignupService) { 
     
   }
 
@@ -24,6 +25,9 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['dashboard']);
     })
       
+    this.signupservice.getrules().then(value =>{
+      this.ocultRedirectToSingUp = !value.activeSignup
+    })
   }
 
   onSubmit(user:user) {

@@ -17,13 +17,11 @@ export class OptionsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,private cookieService:CookieService) {
     this.user = JSON.parse( this.cookieService.get("user"));
-    console.log(this.user.name);
    }
 
   ngOnInit() {
     this.route.data.subscribe((v:options) => {
       this.options = v;
-      console.log(this.options);
     });
 
     

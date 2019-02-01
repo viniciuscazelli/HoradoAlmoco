@@ -1,6 +1,7 @@
 let mongo = require('mongodb');
 let express = require('express');
 let userRouter = require('./routers/user');
+let systemOptionsRouter = require('./routers/systemOptions');
 let cookieParser = require('cookie-parser');
 let expressSession = require('express-session');
 let bodyParser = require('body-parser');
@@ -49,3 +50,4 @@ app.listen(3000, function(){
 });
 
 userRouter(app);
+systemOptionsRouter(app);

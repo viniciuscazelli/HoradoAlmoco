@@ -29,7 +29,8 @@ export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
     
     update(id: string, item: T): Promise<boolean> {
         return new Promise<boolean>((resolve) => {
-            this._collection.updateOne({"_id":id},item,(err)=>{
+            this._collection.updateOne({"_id":id},{ $set:item},(err)=>{
+                console.log(JSON.stringify(err))
                 resolve(!err);
             })
         });
