@@ -9,8 +9,9 @@ class BaseRepository {
     }
     create(item) {
         return new Promise((resolve) => {
-            this._collection.insertOne(item, (err) => {
-                resolve(!err);
+            this._collection.insertOne(item, (err, docInserted) => {
+                let _id = docInserted.insertedId.toHexString();
+                resolve(!err ? _id : null);
             });
         });
     }

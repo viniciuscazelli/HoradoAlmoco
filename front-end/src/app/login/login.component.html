@@ -8,6 +8,7 @@
       <input placeholder="Senha" type="password"  name="password" tabindex="2" required autofocus ngModel>
       <h5 class="errorText" *ngIf="message" >{{message}}</h5>
       <button class="mt2 accent" type="submit" >Entrar</button>
+      <button class="primary" type="button" (click)="gotosignup()">Cadastre-se</button>
     </form>
   </section>
 </section>

@@ -1,0 +1,16 @@
+<section class="content">
+
+    <h4><strong>Opções do sistema</strong></h4>
+
+    <p class="mt2 title-field">Insira um prefixo para bloquear os emails cadastrados, exemplo @exemplo.com.br assim somente usuarios que possuam esse email, exemplo fulano@exemplo.com.br poderá fazer o cadastro.</p>
+    <p class="tip-field">Deixe vazio caso não deseje esse tipo de bloqueio</p>
+    <input type="text" placeholder="Prefixo de e-mail" >
+
+    <p class="mt2 title-field">Ativar cadastro de usuarios no sistemas?</p>
+    <input type="radio" value="yes" name="ative"> 
+    <label for="yes">Sim</label>
+    <input type="radio" value="Não" name="ative"> 
+    <label for="no">Não</label>
+    <button class="mt2 accent" type="submit" >Salvar configurações</button>
+    <button class="primary" type="button" (click)="gotohome()">Cancelar</button>
+</section>

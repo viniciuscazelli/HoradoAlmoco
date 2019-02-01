@@ -16,13 +16,17 @@ export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
              });
     }
 
-    create(item: T): Promise<boolean> {
-        return new Promise<boolean>((resolve) => {
-            this._collection.insertOne(item,(err)=>{
-                resolve(!err);
+    create(item: T): Promise<string> {
+        return new Promise<string>((resolve) => {
+            this._collection.insertOne(item,(err,docInserted)=>{
+
+                let _id : string = docInserted.insertedId.toHexString();
+
+                resolve(!err? _id : null);
             })
         });
     }
+    
     update(id: string, item: T): Promise<boolean> {
         return new Promise<boolean>((resolve) => {
             this._collection.updateOne({"_id":id},item,(err)=>{

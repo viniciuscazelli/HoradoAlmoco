@@ -11,6 +11,16 @@ import { DecorBarComponent } from './decor-bar/decor-bar.component';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './dashboard/header/header.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginService} from './login/login.service';
+import { HttpClientModule  } from '@angular/common/http';
+import { ConfigurationComponent } from './dashboard/configuration/configuration.component';
+import { OptionsComponent } from './dashboard/options/options.component';
+import { LogoutComponent } from './logout/logout.component';
+import { ListComponent } from './dashboard/options/list/list.component';
+import { LogoutService } from './logout/logout.service';
+import { CookieService } from 'ngx-cookie-service';
+import { SystemOptionsComponent } from './dashboard/system-options/system-options.component';
 
 @NgModule({
   declarations: [
@@ -18,15 +28,24 @@ import { HeaderComponent } from './dashboard/header/header.component';
     LoginComponent,
     DecorBarComponent,
     DashboardComponent,
-    HeaderComponent
+    HeaderComponent,
+    SignupComponent,
+    ConfigurationComponent,
+    OptionsComponent,
+    LogoutComponent,
+    ListComponent,
+    SystemOptionsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule ,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [
+    LoginService,LogoutService, CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,15 @@
+<section id="signup">
+  <section id="box">
+    <app-decor-bar></app-decor-bar>
+    <form (ngSubmit)="onSubmit(signUp.value)" #signUp="ngForm"> 
+      <h3>Cadastro</h3>
+      <h5>cadastrar-se no sistemas.</h5>
+      <input placeholder="Nome completo" type="text" name="name" tabindex="1" required autofocus ngModel>
+      <input placeholder="E-mail" type="email" name="email" tabindex="2" required autofocus ngModel>
+      <input placeholder="Senha" type="password"  name="password" tabindex="3" required autofocus ngModel>
+      <h5 class="errorText" *ngIf="message" >{{message}}</h5>
+      <button class="mt2 accent" type="submit" >Cadastrar</button>
+      <button class="primary" type="button" (click)="gotologin()" >Voltar ao login</button>
+    </form>
+  </section>
+</section>

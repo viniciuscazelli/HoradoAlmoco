@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../login/login.service';
+import { Router } from '@angular/router';
+import { user } from '../models/user';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  private user: user;
+
+  constructor(private router:Router, private loginService : LoginService,private cookieService:CookieService) {
+    this.user = JSON.parse( this.cookieService.get("user"));
+   }
 
   ngOnInit() {
+    this.loginService.isAuthenticated().then((value:boolean) =>{
+      if(!value)
+        this.router.navigate(['/']);
+    
+    })
+    
   }
 
 }

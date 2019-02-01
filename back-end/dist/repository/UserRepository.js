@@ -11,6 +11,17 @@ class UserRepository extends BaseRepository_1.BaseRepository {
             });
         });
     }
+    findUserByEmailAndPassword(email, password) {
+        return new Promise((resolve) => {
+            this._collection.findOne({ email: email, password: password }, (err, result) => {
+                if (err) {
+                    resolve(undefined);
+                    return;
+                }
+                resolve(result);
+            });
+        });
+    }
     countUserByEmail(email) {
         return this._collection.count({ email: email });
     }

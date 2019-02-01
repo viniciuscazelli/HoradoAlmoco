@@ -5,4 +5,24 @@
     padding: 20px;
     box-sizing: border-box;
     background-color:#f8f8f8;
+    display: flex;
+    flex-direction: row;
+    -ms-flex-align: center center; 
+}
+
+.content h4{
+    flex:1;
+}
+
+.content .material-icons{
+    font-size: 30px;
+}
+
+.content .material-icons{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.content .material-icons:hover{
+    color: var(--primary);
 }

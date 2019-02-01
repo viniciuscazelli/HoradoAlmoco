@@ -1,0 +1,15 @@
+.content{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 30px;
+}
+
+.title-field{
+    font-size: 15px;
+}
+
+.tip-field{
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--accent)
+}

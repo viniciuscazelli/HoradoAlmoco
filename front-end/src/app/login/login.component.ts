@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Login } from '../models/login';
+import { user } from '../models/user';
 import {Router} from "@angular/router"
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,25 +9,32 @@ import {Router} from "@angular/router"
   styleUrls: ['./login.component.css']
 })
 
-
-
 export class LoginComponent implements OnInit {
 
   public message : String = undefined;
 
-  constructor(private router: Router) { 
+  constructor(private router: Router, private loginService : LoginService) { 
     
   }
 
   ngOnInit() {
-      //this.router.navigate(['dashboard']);
-  }
-
-  onSubmit(login:Login) {
-      this.message = "Erro usuario e/ou senha incorreto(s)!"
+    
+    this.loginService.isAuthenticated().then((value:boolean) =>{
+      if(value)
+        this.router.navigate(['dashboard']);
+    })
       
   }
 
-  
+  onSubmit(user:user) {
+    this.message = undefined;
+    this.loginService.authUser(user).then((message) => {
+      this.message = message;
+    })
+  }
+
+  gotosignup(){
+    this.router.navigate(['signup']);
+  }
 
 }

@@ -1,0 +1,10 @@
+<ul>
+  <ng-container *ngFor="let option of options">
+    
+    <li *ngIf="!option.showOnlyAdmin || (user && user.name == 'admin')">
+      <a *ngIf="option.activeRouterLink" [routerLink]="[option.routerLink]" >{{option.title}}</a>
+      <span *ngIf="!option.activeRouterLink">{{option.title}}</span>
+      <app-options-list [options]="option.options" [user]="user"></app-options-list>
+    </li>
+  </ng-container>
+</ul>
