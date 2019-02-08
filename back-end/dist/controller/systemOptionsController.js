@@ -6,7 +6,7 @@ var systemOptionsController;
 (function (systemOptionsController) {
     function saveSystemOptions(req, res) {
         let s = req.body;
-        if (authController_1.authController.isAuthenticated(req, res)) {
+        if (authController_1.authController.isAuthenticated(req, res, false)) {
             if (authController_1.authController.getUserAuthenticated(req).name == "admin") {
                 systemOptionsCase_1.systemOptionsCase.saveSystemOptions(s).then((value) => {
                     res.setHeader('Content-Type', 'application/json');

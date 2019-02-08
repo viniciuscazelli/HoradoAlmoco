@@ -2,11 +2,13 @@
 const messageReturn_1 = require("../models/messageReturn");
 var authController;
 (function (authController) {
-    function isAuthenticated(req, res, sendresponse = false) {
+    function isAuthenticated(req, res, sendresponse) {
         var m;
-        if (req.session.userLogged == undefined || req.session.userLogged == null) {
+        if (req.session == undefined || req.session.userLogged == undefined || req.session.userLogged == null) {
             m = new messageReturn_1.messageReturn(undefined, "Autorização negada", 401);
             req.session.userLogged = undefined;
+            res.statusCode = m.code;
+            res.send(JSON.stringify(m));
         }
         if (req.session.userLogged != undefined && req.session.userLogged != null && sendresponse) {
             m = new messageReturn_1.messageReturn(req.session.userLogged, "Autorizado", 200);
@@ -16,6 +18,10 @@ var authController;
         return req.session.userLogged != undefined && req.session.userLogged != null;
     }
     authController.isAuthenticated = isAuthenticated;
+    function isAuthenticatedBySession(session) {
+        return session.userLogged != undefined && session.userLogged != null;
+    }
+    authController.isAuthenticatedBySession = isAuthenticatedBySession;
     function setAuth(req, user) {
         req.session.userLogged = user;
     }

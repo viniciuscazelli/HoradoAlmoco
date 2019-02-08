@@ -6,7 +6,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-system-options',
   templateUrl: './system-options.component.html',
-  styleUrls: ['./system-options.component.css']
+  styleUrls: ['./system-options.component.css'],
+  providers: [SystemOptionsService]
 })
 export class SystemOptionsComponent implements OnInit {
 

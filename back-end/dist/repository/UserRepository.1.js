@@ -25,5 +25,8 @@ class UserRepository extends BaseRepository_1.BaseRepository {
     countUserByEmail(email) {
         return this._collection.count({ email: email });
     }
+    subscrible(date) {
+        this._collection.watch([{ $match: { "date": date } }]);
+    }
 }
 exports.UserRepository = UserRepository;

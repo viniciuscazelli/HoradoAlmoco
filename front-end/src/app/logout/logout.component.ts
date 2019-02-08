@@ -4,7 +4,8 @@ import { LogoutService } from './logout.service';
 
 @Component({
   selector: 'app-logout',
-  templateUrl: './logout.component.html'
+  templateUrl: './logout.component.html',
+  providers:[LogoutService]
 })
 export class LogoutComponent implements OnInit {
 

@@ -1,0 +1,48 @@
+.list{
+    width: 292px;
+    margin: 10px;
+    float: left;
+    min-width: 292px;
+}
+
+.list .title h4{
+    font-weight: bold;
+    color:var(--accent);
+    padding: 10px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    flex:1;
+}
+
+.list .title i{
+    font-size: 28px;
+    cursor: pointer;
+    padding: 11px;
+}
+
+.list .title{
+    border: var(--accent) 1px solid;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.list section{
+    margin: 10px;
+    padding: 7px;
+    background-color: #fff;
+    
+}
+
+.list section::before{
+    background-color: var(--accent);
+    width: 5px;
+    height: 20px;
+}
+
+.list section span{
+    font-size: 17px;
+    
+}

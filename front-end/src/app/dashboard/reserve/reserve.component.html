@@ -1,0 +1,14 @@
+<section class="date">
+<i class="material-icons" (click)="downDate()">keyboard_arrow_left</i>
+<h4>{{day.day | date: 'dd/MM/yyyy'}}</h4>
+<i class="material-icons" (click)="upDate()">keyboard_arrow_right</i>
+</section>
+<section class="flex flex-1 content">
+      <app-list-reserve *ngFor="let item of day.horary" 
+                        [habilitReserve]="habilitReserve" 
+                        [habilitRemoveReserve]="reservedList == item" 
+                        [horary]="item"
+                        (cancelReserve)="cancelReserve($event)"
+                        (createReserve)="createReserve($event)" >
+      </app-list-reserve>   
+</section>

@@ -21,16 +21,15 @@ var userController;
                 });
             }
             else {
-                var r = new messageReturn_1.messageReturn(null, "Não foi possivel realizar o cadastro", 400);
+                var response = new messageReturn_1.messageReturn(null, "Não foi possivel realizar o cadastro", 400);
                 res.statusCode = r.code;
-                res.send(JSON.stringify(r));
+                res.send(JSON.stringify(response));
             }
         });
     }
     userController.saveUser = saveUser;
     function authUser(req, res) {
         let u = req.body;
-        console.log(u);
         userCase_1.userCase.authUser(u).then((value) => {
             if (value.code == 200) {
                 authController_1.authController.setAuth(req, value.res);

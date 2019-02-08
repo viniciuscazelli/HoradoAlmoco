@@ -1,0 +1,11 @@
+<section class="list flex-1">
+    <div class="title">
+      <h4 class="mb0" >{{horary.hour | number:'2.0'}}:{{horary.minutes | number:'2.0'}}</h4> 
+      <i class="material-icons" *ngIf="habilitReserve" (click)="_createReserve()">event_available</i>
+      <i class="material-icons" *ngIf="habilitRemoveReserve" (click)="_cancelReserve()">close</i>
+
+    </div>
+    <section *ngFor="let user of horary.reservations">
+      <span>{{user.name}}</span>
+    </section>
+  </section>

@@ -7,7 +7,11 @@ import { SignupService } from '../signup/signup.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  host: {
+    class:'flex flex-1'
+  },
+  providers: [LoginService]
 })
 
 export class LoginComponent implements OnInit {

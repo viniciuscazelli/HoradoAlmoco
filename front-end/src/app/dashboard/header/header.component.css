@@ -14,13 +14,11 @@
     flex:1;
 }
 
-.content .material-icons{
-    font-size: 30px;
-}
 
 .content .material-icons{
     font-size: 30px;
     cursor: pointer;
+    margin-left: 15px;
 }
 
 .content .material-icons:hover{

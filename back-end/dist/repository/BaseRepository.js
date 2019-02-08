@@ -18,7 +18,6 @@ class BaseRepository {
     update(id, item) {
         return new Promise((resolve) => {
             this._collection.updateOne({ "_id": id }, { $set: item }, (err) => {
-                console.log(JSON.stringify(err));
                 resolve(!err);
             });
         });
@@ -30,13 +29,9 @@ class BaseRepository {
             });
         });
     }
-    find(item) {
-        return new Promise((resolve) => {
-            var collection = [];
-            this._collection.find().forEach((doc) => {
-                collection.push(doc);
-            });
-        });
+    find(query) {
+        console.log(query);
+        return this._collection.find(query).toArray();
     }
     findOne(id) {
         return new Promise((resolve) => {

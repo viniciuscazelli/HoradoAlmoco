@@ -12,8 +12,35 @@
   text-rendering: optimizeLegibility;
 }
 
+.flex{
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-1{
+  flex:1;
+}
+
 body , html{
   height: 100%;
+  display:flex;
+  flex-direction: column;
+}
+
+.material-icons-new {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.icon-white {
+  webkit-filter: contrast(4) invert(1);
+  -moz-filter: contrast(4) invert(1);
+  -o-filter: contrast(4) invert(1);
+  -ms-filter: contrast(4) invert(1);
+  filter: contrast(4) invert(1);
 }
 
 :root {

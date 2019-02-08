@@ -1,0 +1,31 @@
+
+@media screen and (max-width: 720px) {
+    .date{
+        justify-content: center !important;
+    }
+}
+
+.date{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.date .material-icons{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.date .material-icons:hover{
+    color: var(--primary);
+}
+
+.content{
+    margin-bottom: 20px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    flex-direction: row;
+    overflow-x: scroll;
+}
+

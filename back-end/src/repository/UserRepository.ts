@@ -32,4 +32,8 @@ export class UserRepository extends BaseRepository<user>{
     countUserByEmail(email:string): Promise<number> {
         return this._collection.count({email:email});          
     }
+
+    subscrible(date:Date): void {
+        this._collection.watch([{$match:{"date":date}}]);          
+    }
 }

@@ -1,6 +1,7 @@
 <section class="content mb2">
 
   <h4 class="m0">{{user.name}}</h4>
+  <i class="material-icons" [routerLink]="['/dashboard']">home</i>
   <i class="material-icons" [routerLink]="[router.url == '/dashboard/options' ? '/dashboard' : '/dashboard/options']">settings</i>
 
 </section>

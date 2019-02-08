@@ -1,7 +1,7 @@
-export class messageReturn {
+export class messageReturn<T> {
 
     constructor(
-        public res: any,
+        public res: T,
         public message: string,
         public code: number = 200
       ) {  

@@ -30,7 +30,7 @@ export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
     update(id: string, item: T): Promise<boolean> {
         return new Promise<boolean>((resolve) => {
             this._collection.updateOne({"_id":id},{ $set:item},(err)=>{
-                console.log(JSON.stringify(err))
+                
                 resolve(!err);
             })
         });
@@ -42,13 +42,9 @@ export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
             })
         });
     }
-    find(item: T): Promise<T[]> {
-        return new Promise<T[]>((resolve) => {
-            var collection: T[] = [];
-            this._collection.find().forEach((doc:T)=>{
-                collection.push(doc);
-            })           
-        });
+    find(query): Promise<T[]> {
+        console.log(query);
+        return this._collection.find(query).toArray();
     }
     findOne(id: string): Promise<T> {
         return new Promise<T>((resolve) => {

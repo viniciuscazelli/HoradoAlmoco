@@ -14,7 +14,7 @@ export module userController {
             var systemOptions:systemOptions = r.res;
             if(systemOptions.activeSignup && u.name.endsWith(systemOptions.prefix)){
 
-                userCase.saveUser(u).then((value:messageReturn) => {
+                userCase.saveUser(u).then((value:messageReturn<user>) => {
                     if(value.code == 200)
                         this.authUser(req,res);
                     else{
@@ -24,17 +24,16 @@ export module userController {
                     }
                 });
             }else{
-                var r : messageReturn  = new messageReturn(null,"Não foi possivel realizar o cadastro",400);
+                var response : messageReturn<user>  = new messageReturn<user>(null,"Não foi possivel realizar o cadastro",400);
                 res.statusCode = r.code;
-                res.send(JSON.stringify(r));
+                res.send(JSON.stringify(response));
             }
         })
     }
 
     export function authUser(req, res){
         let  u : user = req.body;
-        console.log(u);
-        userCase.authUser(u).then((value:messageReturn) => {
+        userCase.authUser(u).then((value:messageReturn<user>) => {
             if(value.code == 200)
             {
                 authController.setAuth(req,value.res);

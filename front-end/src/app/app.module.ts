@@ -14,7 +14,6 @@ import { HeaderComponent } from './dashboard/header/header.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginService} from './login/login.service';
 import { HttpClientModule  } from '@angular/common/http';
-import { ConfigurationComponent } from './dashboard/configuration/configuration.component';
 import { OptionsComponent } from './dashboard/options/options.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ListComponent } from './dashboard/options/list/list.component';
@@ -23,6 +22,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { SystemOptionsComponent } from './dashboard/system-options/system-options.component';
 import { SystemOptionsService } from './dashboard/system-options/system-options.service';
 import { SignupService } from './signup/signup.service';
+import { MenuComponent } from './dashboard/menu/menu.component';
+import { ItemMenuComponent } from './dashboard/menu/item-menu/item-menu.component';
+import { ReserveComponent } from './dashboard/reserve/reserve.component';
+import { ListReserveComponent } from './dashboard/reserve/list-reserve/list-reserve.component';
+import { ReserveService } from './dashboard/reserve/reserve.service';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 @NgModule({
   declarations: [
@@ -32,25 +37,28 @@ import { SignupService } from './signup/signup.service';
     DashboardComponent,
     HeaderComponent,
     SignupComponent,
-    ConfigurationComponent,
     OptionsComponent,
     LogoutComponent,
     ListComponent,
-    SystemOptionsComponent
+    SystemOptionsComponent,
+    MenuComponent,
+    ItemMenuComponent,
+    ReserveComponent,
+    ListReserveComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule ,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    Ng4LoadingSpinnerModule.forRoot()
   ],
   providers: [
     LoginService,
-    LogoutService,
     CookieService, 
     SystemOptionsService,
-    SignupService
+    Ng4LoadingSpinnerModule
   ],
   bootstrap: [AppComponent]
 })

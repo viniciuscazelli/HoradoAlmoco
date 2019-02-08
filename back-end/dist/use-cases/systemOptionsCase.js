@@ -34,20 +34,29 @@ var systemOptionsCase;
     function saveSystemOptions(systemOptions) {
         return new Promise((resolve) => {
             (() => __awaiter(this, void 0, void 0, function* () {
+                if (!systemOptions || systemOptions.prefix == undefined || systemOptions.activeSignup == undefined) {
+                    var r = new messageReturn_1.messageReturn(undefined, "Preencha os campos corretamente!", 400);
+                    resolve(r);
+                    return;
+                }
+                if (systemOptions.prefix.length > 200) {
+                    var r = new messageReturn_1.messageReturn(undefined, "Tamanho incorreto do campo prefixo digite um prefixo com tamanho de até 200 caracteres!", 400);
+                    resolve(r);
+                    return;
+                }
                 const connection = yield mongodb_1.MongoClient.connect(config_1.config.url, { useNewUrlParser: true });
                 const db = connection.db(config_1.config.database);
                 var systemOptionsRepository = new SystemOptionsRepository_1.SystemOptionsRepository(db, "systemOptions");
                 systemOptionsRepository.getfirstConfig().then((value) => {
                     if (value != undefined && value != null && value._id != undefined && value._id != null) {
                         systemOptions._id = value._id;
-                        console.log(systemOptions);
                         systemOptionsRepository.update(systemOptions._id, systemOptions).then(res => {
                             if (res) {
                                 var r = new messageReturn_1.messageReturn(systemOptions, "Sucesso!", 200);
                                 resolve(r);
                             }
                             else {
-                                var r = new messageReturn_1.messageReturn(systemOptions, "Falha ao atualizar as opções do sistema!", 200);
+                                var r = new messageReturn_1.messageReturn(undefined, "Falha ao atualizar as opções do sistema!", 200);
                                 resolve(r);
                             }
                         });

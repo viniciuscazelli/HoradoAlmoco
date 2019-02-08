@@ -12,6 +12,7 @@ const mongodb_1 = require("mongodb");
 const UserRepository_1 = require("../repository/UserRepository");
 const js_sha512_1 = require("js-sha512");
 const config_1 = require("../config");
+const util_1 = require("./util");
 var userCase;
 (function (userCase) {
     function saveUser(user) {
@@ -19,6 +20,36 @@ var userCase;
             (() => __awaiter(this, void 0, void 0, function* () {
                 if (!user || !user.email || !user.name || !user.password) {
                     var r = new messageReturn_1.messageReturn(undefined, "Preencha os campos corretamente!", 400);
+                    resolve(r);
+                    return;
+                }
+                if (user.name.length < 3 || user.name.length > 200) {
+                    var r = new messageReturn_1.messageReturn(undefined, "Tamanho incorreto do campo nome digite um nome com tamanho entre 6 e 200 caracteres", 400);
+                    resolve(r);
+                    return;
+                }
+                if (user.email.length < 6 || user.email.length > 200) {
+                    var r = new messageReturn_1.messageReturn(undefined, "Tamanho incorretoa do campo email digite um email com tamanho entre 6 e 200 caracteres", 400);
+                    resolve(r);
+                    return;
+                }
+                if (user.password.length < 6 || user.password.length > 50) {
+                    var r = new messageReturn_1.messageReturn(undefined, "Tamanho incorreto do campo senha digite uma senha com tamanho entre 6 e 50 caracteres", 400);
+                    resolve(r);
+                    return;
+                }
+                if (user.name.toUpperCase() == 'ADMIN') {
+                    var r = new messageReturn_1.messageReturn(undefined, "Nome indisponível", 400);
+                    resolve(r);
+                    return;
+                }
+                if (!util_1.utilCase.textValidate(user.name, "[a-zA-Z0-9 \_,.@-]")) {
+                    var r = new messageReturn_1.messageReturn(undefined, "Caracteres invalidos para o nome", 400);
+                    resolve(r);
+                    return;
+                }
+                if (!util_1.utilCase.textValidate(user.email, "[a-zA-Z0-9\_,.@-]")) {
+                    var r = new messageReturn_1.messageReturn(undefined, "Caracteres invalidos para o email", 400);
                     resolve(r);
                     return;
                 }

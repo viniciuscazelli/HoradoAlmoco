@@ -7,7 +7,11 @@ import { user } from '../models/user';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
+  host: {
+    class:'flex flex-1'
+  },
+  providers:[SignupService]
 })
 export class SignupComponent implements OnInit {
 
